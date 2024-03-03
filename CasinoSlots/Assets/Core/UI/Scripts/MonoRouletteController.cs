@@ -1,7 +1,9 @@
 using UnityEngine.UI;
 using AxGrid.Base;
+using AxGrid.Model;
 using AxGrid.Path;
 using UnityEngine;
+using System;
 
 public class MonoRouletteController : MonoBehaviourExtBind
 {
@@ -16,8 +18,22 @@ public class MonoRouletteController : MonoBehaviourExtBind
     private float _yOffset;
     private bool _isStopRequest;
 
+    [Bind("IsSpinning")]
+    private void PerformStartSpinning(bool isSpinning)
+    {
+        if (!isSpinning) return;
+
+        Path = new CPath();
+
+        Path.EasingBackOut(0.6f, 0, 1f, value => { _rect.anchoredPosition = new Vector3(0, 30, 0) * value; }).Action(() =>
+        {
+            //TODO: Make Laught
+            Model.EventManager.Invoke(FSMConstants.StartAcceleration);
+        });
+    }
+
     [OnUpdate]
-    private void UpdateThis()
+    private void PerformUpdate()
     {
         _rect.anchoredPosition -= Vector2.up * Speed;
 
@@ -41,7 +57,7 @@ public class MonoRouletteController : MonoBehaviourExtBind
     private void PerformStop()
     {
         Model.Set("Speed", 0);
-        
+
         var targetPosition = (Vector3)stopMarket.anchoredPosition;
         targetPosition.x = 0;
         targetPosition.y -= targetCell.localPosition.y;
@@ -50,11 +66,12 @@ public class MonoRouletteController : MonoBehaviourExtBind
 
         Path = new CPath();
 
-        Path.EasingBackOut(duration, 0, 1f, value => { _rect.localPosition = (targetPosition - startPosition) * value + startPosition; }).EasingLinear(duration2, 0, 1f, value =>
-        {
-            var multiplier = Mathf.Sin(Mathf.PI * value);
-            _rect.localPosition = punchDirection * multiplier + targetPosition;
-        });
+        Path.EasingBackOut(duration, 0, 1f, value => { _rect.localPosition = (targetPosition - startPosition) * value + startPosition; })
+            .EasingLinear(duration2, 0, 1f, value =>
+            {
+                var multiplier = Mathf.Sin(Mathf.PI * value);
+                _rect.localPosition = punchDirection * multiplier + targetPosition;
+            });
     }
 
     [OnStart]
