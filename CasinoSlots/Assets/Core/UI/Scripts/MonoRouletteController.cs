@@ -3,10 +3,9 @@ using AxGrid.Base;
 using AxGrid.Path;
 using UnityEngine;
 
-public class TestRoulette : MonoBehaviourExt
+public class MonoRouletteController : MonoBehaviourExtBind
 {
     [SerializeField] private VerticalLayoutGroup layoutGroup;
-    [SerializeField, Range(0, 100)] private float _speed;
     [SerializeField] private RectTransform stopMarket;
     [SerializeField] private RectTransform targetCell;
     [SerializeField] private float duration;
@@ -20,7 +19,7 @@ public class TestRoulette : MonoBehaviourExt
     [OnUpdate]
     private void UpdateThis()
     {
-        _rect.anchoredPosition -= Vector2.up * _speed;
+        _rect.anchoredPosition -= Vector2.up * Speed;
 
         if (_rect.anchoredPosition.y < _yOffset)
         {
@@ -41,8 +40,8 @@ public class TestRoulette : MonoBehaviourExt
 
     private void PerformStop()
     {
-        _speed = 0;
-
+        Model.Set("Speed", 0);
+        
         var targetPosition = (Vector3)stopMarket.anchoredPosition;
         targetPosition.x = 0;
         targetPosition.y -= targetCell.localPosition.y;
@@ -61,10 +60,10 @@ public class TestRoulette : MonoBehaviourExt
     [OnStart]
     private void StartThis()
     {
-        Debug.Log("StartUpd");
         _rect = GetComponent<RectTransform>();
         _yOffset -= _rect.rect.height - (targetCell.sizeDelta.y * 3 + layoutGroup.spacing * 2);
         Path = new CPath();
-
     }
+
+    private float Speed => Model.GetFloat("Speed");
 }
