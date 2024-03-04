@@ -1,10 +1,8 @@
-﻿using AxGrid;
-using AxGrid.FSM;
-using Unity.VisualScripting;
+﻿using AxGrid.FSM;
 
 namespace Core.FSM
 {
-    [AxGrid.FSM.State(nameof(StopSpinning))]
+    [State(nameof(StopSpinning))]
     public class StopSpinning : FSMState
     {
         [Enter]
@@ -16,6 +14,8 @@ namespace Core.FSM
             }
             
             Model.EventManager.Invoke("IsSpinning", false);
+            
+            Parent.Change(FSMConstants.IdleState);
         }
     }
 }

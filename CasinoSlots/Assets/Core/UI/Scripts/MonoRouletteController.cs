@@ -4,6 +4,8 @@ using AxGrid.Model;
 using AxGrid.Path;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MonoRouletteController : MonoBehaviourExtBind
 {
@@ -17,6 +19,7 @@ public class MonoRouletteController : MonoBehaviourExtBind
     private float _yOffset;
     private bool _isStopRequest;
     private RectTransform _rect;
+    private List<MonoSlotCell> _cells = new();
     private RouletteConfig _rouletteConfig;
     private RouletteCellConfig _cellsConfig;
 
@@ -30,9 +33,25 @@ public class MonoRouletteController : MonoBehaviourExtBind
             return;
         }
 
+        FindAppropriateTarget();
         var startPosition = _rect.anchoredPosition;
         var targetPosition = _rect.anchoredPosition + new Vector2(0, 30);
         Path.EasingBackOut(0.6f, 0, 1f, value => { _rect.anchoredPosition = (targetPosition - startPosition) * value + startPosition; }).Action(() => { Model.EventManager.Invoke(FSMConstants.StartAcceleration); });
+    }
+
+    private void FindAppropriateTarget()
+    {
+        var targetType = Model.Get("ECellType", ECellType.Hand);
+        var cell = _cells.FirstOrDefault(cell => cell.Type == targetType);
+
+        if (cell)
+        {
+            targetCell = cell.RectTransform;
+        }
+        else
+        {
+            throw new Exception($"{targetType} doesn't contains in roulette");
+        }
     }
 
     [OnUpdate]
@@ -83,20 +102,29 @@ public class MonoRouletteController : MonoBehaviourExtBind
     private void SpawnCells()
     {
         _rect = GetComponent<RectTransform>();
-        
+
         _rouletteConfig = Resources.Load<RouletteConfig>("RouletteConfig");
         _cellsConfig = Resources.Load<RouletteCellConfig>("RouletteCell");
 
         var cells = _rouletteConfig.Cells;
+        var cellLenght = cells.Length;
+
+        var sizeDelta = _rect.sizeDelta;
+        var cellDelta = _cellsConfig.MonoSlotCell.GetComponent<RectTransform>().sizeDelta;
+        sizeDelta.y = cellDelta.y * cellLenght + layoutGroup.spacing * (cellLenght - 1);
+        _rect.sizeDelta = sizeDelta;
+
         for (var i = 0; i < cells.Length; i++)
         {
             var type = cells[i];
             var cell = _cellsConfig.GetCell(type);
             cell.transform.SetParent(_rect);
 
-            targetCell = cell.GetComponent<RectTransform>();
+            if (i == 0 || i == cellLenght - 1) continue;
+
+            _cells.Add(cell);
         }
-        
+
         LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
     }
 

@@ -316,7 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363c6caa0d8fab84fa4eb250b038638b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30.4
+  globalModel: 0
+  layoutGroup: {fileID: 0}
   stopMarket: {fileID: 4367296635482660859}
   targetCell: {fileID: 4363102424159992622}
   duration: 0.2
@@ -1835,7 +1836,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!1 &7993993275066707136
 GameObject:
   m_ObjectHideFlags: 0

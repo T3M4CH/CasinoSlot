@@ -5,12 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Config/RouletteCell", fileName = "RouletteCell")]
 public class RouletteCellConfig : ScriptableObject, IWindowObject
 {
-    [SerializeField] private MonoSlotCell monoSlotCell;
     [SerializeField] private SlotCellStruct[] slotCellStructs;
 
     public MonoSlotCell GetCell(ECellType cellType)
     {
-        var cellInstance = Instantiate(monoSlotCell);
+        var cellInstance = Instantiate(MonoSlotCell);
 
         var cellStruct = slotCellStructs.First(cell => cell.Type == cellType);
         cellInstance.Initialize(cellStruct);
@@ -19,4 +18,5 @@ public class RouletteCellConfig : ScriptableObject, IWindowObject
     }
     
     public string Patch => "Roulette/RouletteCell";
+    [field:SerializeField] public MonoSlotCell MonoSlotCell { get; private set; }
 }

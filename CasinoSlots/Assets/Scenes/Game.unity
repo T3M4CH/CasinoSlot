@@ -1042,6 +1042,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514681615}
   m_CullTransparentMesh: 1
+--- !u!224 &619674595 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4849305893312284402, guid: 3874f0e09fdc5294a99e81420fb59004,
+    type: 3}
+  m_PrefabInstance: {fileID: 432346358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,7 +1991,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 168.87, y: 1350}
+  m_SizeDelta: {x: 168.87, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1418764249114801490
 GameObject:
@@ -2111,7 +2117,7 @@ MonoBehaviour:
   globalModel: 0
   layoutGroup: {fileID: 495151526596047712}
   stopMarket: {fileID: 4126632889117887117}
-  targetCell: {fileID: 0}
+  targetCell: {fileID: 619674595}
   duration: 0.2
   punchDirection: {x: 0, y: -5, z: 0}
   duration2: 0.3
@@ -2241,7 +2247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4503812288320117432
@@ -2805,7 +2811,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 500}
+  m_SizeDelta: {x: 160, y: 505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8911280046243214355
 RectTransform:

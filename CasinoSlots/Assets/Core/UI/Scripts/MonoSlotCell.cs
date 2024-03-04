@@ -11,6 +11,10 @@ public class MonoSlotCell : MonoBehaviour
     public void Initialize(SlotCellStruct cellStruct)
     {
         _cellStruct = cellStruct;
+        Type = _cellStruct.Type;
         image.sprite = _cellStruct.Sprites[0];
     }
+ 
+    public ECellType Type { get; private set; }
+    [field: SerializeField] public RectTransform RectTransform { get; private set; }
 }
