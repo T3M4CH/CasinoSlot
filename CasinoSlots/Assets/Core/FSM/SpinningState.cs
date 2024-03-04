@@ -1,15 +1,22 @@
 ﻿using AxGrid;
+using AxGrid.Base;
 using AxGrid.FSM;
-using AxGrid.Model;
 
 namespace Core.FSM
 {
     [State(nameof(SpinningState))]
     public class SpinningState : FSMState
     {
-        [Enter]
-        private void Enter()
+        [OnDelay(2f)]
+        private void ShutEffect()
         {
+            Model.EventManager.Invoke("ShutAccelerationEffects");
+        }
+        
+        [One(1f)]
+        private void Stop()
+        {
+            Parent.Change(nameof(StopSpinning));
         }
     }
 }

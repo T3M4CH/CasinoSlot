@@ -21,6 +21,9 @@ public class MonoLowPanelController : MonoBehaviourExtBind
     private void ValidateSpinButton(bool interactable)
     {
         Log.Info("Interactable");
+        stopButton.interactable = interactable;
+        stopText.color = interactable ? deselectedButtonColor : selectedButtonColor;
+        
         interactable = !interactable;
         spinButton.interactable = interactable;
         spinText.color = interactable ? deselectedButtonColor : selectedButtonColor;

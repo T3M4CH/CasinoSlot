@@ -21,15 +21,16 @@ public class MonoRouletteController : MonoBehaviourExtBind
     [Bind("IsSpinning")]
     private void PerformStartSpinning(bool isSpinning)
     {
-        if (!isSpinning) return;
-
         Path = new CPath();
-
-        Path.EasingBackOut(0.6f, 0, 1f, value => { _rect.anchoredPosition = new Vector3(0, 30, 0) * value; }).Action(() =>
+        if (!isSpinning)
         {
-            //TODO: Make Laught
-            Model.EventManager.Invoke(FSMConstants.StartAcceleration);
-        });
+            _isStopRequest = true;
+            return;
+        }
+
+        var startPosition = _rect.anchoredPosition;
+        var targetPosition = _rect.anchoredPosition + new Vector2(0, 30);
+        Path.EasingBackOut(0.6f, 0, 1f, value => { _rect.anchoredPosition = (targetPosition - startPosition) * value + startPosition; }).Action(() => { Model.EventManager.Invoke(FSMConstants.StartAcceleration); });
     }
 
     [OnUpdate]
@@ -46,11 +47,6 @@ public class MonoRouletteController : MonoBehaviourExtBind
                 _isStopRequest = false;
                 PerformStop();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            _isStopRequest = true;
         }
     }
 

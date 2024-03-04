@@ -8,12 +8,14 @@ using AxGrid;
 
 public class MonoFsmController : MonoBehaviourExtBind
 {
+    private float _multiplier;
+
     [OnStart]
     private void PerformStart()
     {
         Settings.Fsm = new FSM();
-        Settings.Fsm.Add(new IdleState(), new StartSpinningState(), new SpinningState(), new AccelerationState());
-        
+        Settings.Fsm.Add(new IdleState(), new StartSpinningState(), new SpinningState(), new AccelerationState(), new StopSpinning());
+
         Settings.Fsm.Start(nameof(IdleState));
     }
 
@@ -32,9 +34,17 @@ public class MonoFsmController : MonoBehaviourExtBind
     [Bind("StartAcceleration")]
     private void PerformAcceleration()
     {
+        if (Settings.Fsm.CurrentStateName != FSMConstants.StartSpinningState) return;
+
         Settings.Fsm.Change(FSMConstants.AccelerationState);
     }
-    
+
+    [Bind("OnStopButtonClick")]
+    private void PerformStopButtonClicked()
+    {
+        Settings.Fsm.Change(nameof(Core.FSM.StopSpinning));
+    }
+
     //TEST
     [Button]
     private void StopSpinning()
