@@ -20,7 +20,6 @@ public class MonoLowPanelController : MonoBehaviourExtBind
     [Bind("IsSpinning")]
     private void ValidateSpinButton(bool interactable)
     {
-        Log.Info("Interactable");
         stopButton.interactable = interactable;
         stopText.color = interactable ? deselectedButtonColor : selectedButtonColor;
         

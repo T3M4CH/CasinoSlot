@@ -9,7 +9,6 @@ namespace Core.FSM
         [Enter]
         private void Enter()
         {
-            Log.Info("Spin Start State");
             Model.EventManager.Invoke(FSMConstants.IsSpinning, true);
         }
     }

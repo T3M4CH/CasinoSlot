@@ -1,0 +1,22 @@
+using Core.UI.Scripts;
+using System.Linq;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Config/RouletteCell", fileName = "RouletteCell")]
+public class RouletteCellConfig : ScriptableObject, IWindowObject
+{
+    [SerializeField] private MonoSlotCell monoSlotCell;
+    [SerializeField] private SlotCellStruct[] slotCellStructs;
+
+    public MonoSlotCell GetCell(ECellType cellType)
+    {
+        var cellInstance = Instantiate(monoSlotCell);
+
+        var cellStruct = slotCellStructs.First(cell => cell.Type == cellType);
+        cellInstance.Initialize(cellStruct);
+
+        return cellInstance;
+    }
+    
+    public string Patch => "Roulette/RouletteCell";
+}

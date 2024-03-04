@@ -14,9 +14,11 @@ public class MonoRouletteController : MonoBehaviourExtBind
     [SerializeField] private Vector3 punchDirection;
     [SerializeField] private float duration2;
 
-    private RectTransform _rect;
     private float _yOffset;
     private bool _isStopRequest;
+    private RectTransform _rect;
+    private RouletteConfig _rouletteConfig;
+    private RouletteCellConfig _cellsConfig;
 
     [Bind("IsSpinning")]
     private void PerformStartSpinning(bool isSpinning)
@@ -67,15 +69,35 @@ public class MonoRouletteController : MonoBehaviourExtBind
             {
                 var multiplier = Mathf.Sin(Mathf.PI * value);
                 _rect.localPosition = punchDirection * multiplier + targetPosition;
-            });
+            }).Action(() => Model.EventManager.Invoke("CompleteRoll"));
     }
 
     [OnStart]
     private void StartThis()
     {
-        _rect = GetComponent<RectTransform>();
+        SpawnCells();
         _yOffset -= _rect.rect.height - (targetCell.sizeDelta.y * 3 + layoutGroup.spacing * 2);
         Path = new CPath();
+    }
+
+    private void SpawnCells()
+    {
+        _rect = GetComponent<RectTransform>();
+        
+        _rouletteConfig = Resources.Load<RouletteConfig>("RouletteConfig");
+        _cellsConfig = Resources.Load<RouletteCellConfig>("RouletteCell");
+
+        var cells = _rouletteConfig.Cells;
+        for (var i = 0; i < cells.Length; i++)
+        {
+            var type = cells[i];
+            var cell = _cellsConfig.GetCell(type);
+            cell.transform.SetParent(_rect);
+
+            targetCell = cell.GetComponent<RectTransform>();
+        }
+        
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
     }
 
     private float Speed => Model.GetFloat("Speed");

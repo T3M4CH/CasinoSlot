@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2eea0acd18a874a86e8810e5ec6032, type: 3}
+  m_Name: RouletteCell
+  m_EditorClassIdentifier: 
+  monoSlotCell: {fileID: 2178950335790527615, guid: 2e422c397eb2727449d2fc0efac4edb7,
+    type: 3}
+  slotCellStructs:
+  - <Type>k__BackingField: 0
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: 80bcee90a52cbc548a9eaa7af9774922, type: 3}
+    - {fileID: 21300000, guid: f347be7b09b8cf94f86369466b511b67, type: 3}
+    - {fileID: 21300000, guid: b8ae539872ce53b42b791a1b1c252334, type: 3}
+    - {fileID: 21300000, guid: e078d6c8b195f834eb577d50bb0dff39, type: 3}
+    - {fileID: 21300000, guid: f317c2af1427b03478b526315398bc29, type: 3}
+  - <Type>k__BackingField: 1
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: bf7c9038e7e40d84398d99b86ba3cefb, type: 3}
+    - {fileID: 21300000, guid: 7033a711b92438843a189e865aa0a8cb, type: 3}
+    - {fileID: 21300000, guid: abfc4e1ff5f9bf34abd63bc7ff4a5342, type: 3}
+    - {fileID: 21300000, guid: d8b90603d650121449831543dada1ca6, type: 3}
+    - {fileID: 21300000, guid: 3a35630d8a5ef6047bc0abce1bab7e65, type: 3}
+  - <Type>k__BackingField: 2
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: 411bf48417894f84789087a46be5985e, type: 3}
+    - {fileID: 21300000, guid: c19297a3ab185554eac7ef328c349684, type: 3}
+    - {fileID: 21300000, guid: fc5b989ce1f15f34a84f19725e2bb9c4, type: 3}
+    - {fileID: 21300000, guid: 81024ccaa614fb9479da0f058ea6bbdd, type: 3}
+    - {fileID: 21300000, guid: f283d95ca969c1a4cbcf6e8638ee0dc3, type: 3}
+  - <Type>k__BackingField: 3
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: e7a085be6d1908945ac9cc00043ad6cd, type: 3}
+    - {fileID: 21300000, guid: f24a71d10b7f37740b0713b27931a6d4, type: 3}
+    - {fileID: 21300000, guid: 9989116d6f605e0408de5e8283773780, type: 3}
+    - {fileID: 21300000, guid: 796a998309b8ff040ac535fa75496eee, type: 3}
+    - {fileID: 21300000, guid: 1c8c4da3c097f8a408ebb8cf2a269ed6, type: 3}
+  - <Type>k__BackingField: 4
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: 4d6ae336c10975b4199b009d65e0e479, type: 3}
+    - {fileID: 21300000, guid: 2b90d8d8202edb24f8532f0a4a23e897, type: 3}
+    - {fileID: 21300000, guid: 7339292519ab1124cb5502bfe0ee3708, type: 3}
+    - {fileID: 21300000, guid: 7542f22b00c422d4ea0e225fc03c84f5, type: 3}
+    - {fileID: 21300000, guid: ba2fe118dcc8a21428c306cfea86b8ad, type: 3}
+  - <Type>k__BackingField: 5
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: bf2ec66b9f53f224189e09db6ed975a4, type: 3}
+    - {fileID: 21300000, guid: f80c319c2464cbd4e9be16f4d2b9c3de, type: 3}
+    - {fileID: 21300000, guid: b0e41b8bb9a35ae4697f608195147ae4, type: 3}
+    - {fileID: 21300000, guid: 0823762665a019049a48ba580f2544e1, type: 3}
+    - {fileID: 21300000, guid: e96d2f27c6952fc458e76a2e80c0bc5e, type: 3}
+  - <Type>k__BackingField: 6
+    <Sprites>k__BackingField:
+    - {fileID: 21300000, guid: 89e0f40c3cbccb1428e47af99e180e41, type: 3}
+    - {fileID: 21300000, guid: dfb92d73c16c7cb479e2c8f8acef70ef, type: 3}
+    - {fileID: 21300000, guid: efc1c3d27c9edb74bbff4f0ca7782f32, type: 3}
+    - {fileID: 21300000, guid: 22feb4ba30e566c4e9509421af42327f, type: 3}
+    - {fileID: 21300000, guid: f7029b1fcc6a1164fa09afd8499ed158, type: 3}

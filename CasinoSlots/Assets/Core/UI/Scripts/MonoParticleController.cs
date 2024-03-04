@@ -7,6 +7,7 @@ public class MonoParticleController : MonoBehaviourExtBind
 {
     [SerializeField] private Transform leftSkull;
     [SerializeField] private Transform rightSkull;
+    [SerializeField] private GameObject winEffect;
     [SerializeField] private Animator ghostAnimator;
 
     private static readonly int Laugh = Animator.StringToHash("Laugh");
@@ -14,6 +15,8 @@ public class MonoParticleController : MonoBehaviourExtBind
     [Bind("IsSpinning")]
     private void PerformGhostLaugh(bool value)
     {
+        winEffect.SetActive(false);
+        
         if (!value)
         {
             PerformStopEffects();
@@ -43,6 +46,12 @@ public class MonoParticleController : MonoBehaviourExtBind
 
             ghostAnimator.SetBool(Laugh, false);
         });
+    }
+
+    [Bind("CompleteRoll")]
+    private void RandomShowEffect()
+    {
+        winEffect.SetActive(Random.Range(0, 10) > 4);
     }
 
     private void MoveSkull()
