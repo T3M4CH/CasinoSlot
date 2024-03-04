@@ -7,6 +7,7 @@ public static class FSMConstants
     public const string SpinningState = nameof(Core.FSM.SpinningState);
     public const string AccelerationState = nameof(Core.FSM.AccelerationState);
     public const string StartSpinningState = nameof(Core.FSM.StartSpinningState);
+    public const string StopSpinning = nameof(Core.FSM.StopSpinning);
 
     #endregion
 

@@ -16,7 +16,7 @@ namespace Core.FSM
         [One(1f)]
         private void Stop()
         {
-            Parent.Change(nameof(StopSpinning));
+            Parent.Change(FSMConstants.StopSpinning);
         }
     }
 }

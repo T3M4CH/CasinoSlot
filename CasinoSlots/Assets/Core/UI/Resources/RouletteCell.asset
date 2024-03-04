@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2eea0acd18a874a86e8810e5ec6032, type: 3}
   m_Name: RouletteCell
   m_EditorClassIdentifier: 
-  monoSlotCell: {fileID: 2178950335790527615, guid: 2e422c397eb2727449d2fc0efac4edb7,
-    type: 3}
   slotCellStructs:
   - <Type>k__BackingField: 0
     <Sprites>k__BackingField:
@@ -64,3 +62,5 @@ MonoBehaviour:
     - {fileID: 21300000, guid: efc1c3d27c9edb74bbff4f0ca7782f32, type: 3}
     - {fileID: 21300000, guid: 22feb4ba30e566c4e9509421af42327f, type: 3}
     - {fileID: 21300000, guid: f7029b1fcc6a1164fa09afd8499ed158, type: 3}
+  <MonoSlotCell>k__BackingField: {fileID: 2178950335790527615, guid: 2e422c397eb2727449d2fc0efac4edb7,
+    type: 3}

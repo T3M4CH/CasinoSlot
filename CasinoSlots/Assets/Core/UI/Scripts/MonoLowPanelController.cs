@@ -8,6 +8,7 @@ using TMPro;
 
 public class MonoLowPanelController : MonoBehaviourExtBind
 {
+    [SerializeField] private TMP_Text balanceText;
     [SerializeField] private Color selectedButtonColor;
     [SerializeField] private Color deselectedButtonColor;
     
@@ -37,6 +38,12 @@ public class MonoLowPanelController : MonoBehaviourExtBind
     {
         stopButton.interactable = interactable;
         stopText.color = interactable ? deselectedButtonColor : selectedButtonColor;
+    }
+
+    [Bind("OnMoneyChanged")]
+    private void PerformUpdateBalance(int value)
+    {
+        balanceText.text = $"{value}$";
     }
 
     [OnDestroy]

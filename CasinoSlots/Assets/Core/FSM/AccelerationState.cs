@@ -46,14 +46,14 @@ namespace Core.FSM
                         }
                     }
 
-                    if (Parent.CurrentStateName == nameof(AccelerationState))
+                    if (Parent.CurrentStateName == FSMConstants.AccelerationState)
                     {
-                        Parent.Change(nameof(SpinningState));
+                        Parent.Change(FSMConstants.SpinningState);
                     }
                 }
                 catch
                 {
-                    Log.Warn("Accelerate State was corrupted");
+                    Log.Info("Accelerate State was corrupted");
                 }
             });
         }

@@ -31,6 +31,12 @@ public class MonoFsmController : MonoBehaviourExtBind
         Settings.Fsm.Change(FSMConstants.StartSpinningState);
     }
 
+    [Bind("CompleteRoll")]
+    private void PerformAddBalance()
+    {
+        Model.Inc("Money", Random.Range(20, 50));
+    }
+
     [Bind("StartAcceleration")]
     private void PerformAcceleration()
     {
@@ -42,7 +48,7 @@ public class MonoFsmController : MonoBehaviourExtBind
     [Bind("OnStopButtonClick")]
     private void PerformStopButtonClicked()
     {
-        Settings.Fsm.Change(nameof(Core.FSM.StopSpinning));
+        Settings.Fsm.Change(FSMConstants.StopSpinning);
     }
 
     //TEST
